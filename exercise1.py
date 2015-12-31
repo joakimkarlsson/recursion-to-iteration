@@ -40,10 +40,10 @@ def find_val_or_next_smallest(bst, x, candidate=None):
         return candidate
     elif bst.val == x:
         return x
-    elif bst.val > x:
-        return find_val_or_next_smallest(bst.left, x, candidate)
-    else:
-        return find_val_or_next_smallest(bst.right, x, bst.val)
+
+    candidate = candidate if bst.val > x else bst.val
+    bst = bst.left if bst.val > x else bst.right
+    return find_val_or_next_smallest(bst, x, candidate)
 
 
 # tests
